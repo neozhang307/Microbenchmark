@@ -6,3 +6,5 @@ NVIDIA Tesla P100-PCIE-16GB	fp32	lattency is 9.676758
 NVIDIA Tesla P100-PCIE-16GB	fp64	lattency is 9.825195
 GeForce GTX 980 Ti	fp32	lattency is 9.104980
 GeForce GTX 980 Ti	fp64	lattency is 48.186523
+GeForce GTX 1080 Ti	fp32	lattency is 6.718750
+GeForce GTX 1080 Ti	fp64	lattency is 48.062500
