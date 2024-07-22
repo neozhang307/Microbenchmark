@@ -4,3 +4,5 @@ Tesla K20c	fp32	lattency is 9.756836
 Tesla K20c	fp64	lattency is 15.796875
 NVIDIA Tesla P100-PCIE-16GB	fp32	lattency is 9.676758
 NVIDIA Tesla P100-PCIE-16GB	fp64	lattency is 9.825195
+GeForce GTX 980 Ti	fp32	lattency is 9.104980
+GeForce GTX 980 Ti	fp64	lattency is 48.186523
