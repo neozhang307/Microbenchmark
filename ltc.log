@@ -1,2 +1,4 @@
 NVIDIA H100 PCIe	fp32	lattency is 4.047363
 NVIDIA H100 PCIe	fp64	lattency is 8.047363
+Tesla K20c	fp32	lattency is 9.756836
+Tesla K20c	fp64	lattency is 15.796875
