@@ -1,1 +1,1 @@
-nvcc main.cu -o ltc
+nvcc intrinsic.cu -o intrinsicltc
