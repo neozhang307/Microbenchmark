@@ -10,3 +10,5 @@ GeForce GTX 1080 Ti	fp32	lattency is 6.718750
 GeForce GTX 1080 Ti	fp64	lattency is 48.062500
 NVIDIA GeForce RTX 2080 Ti	fp32	lattency is 4.226562
 NVIDIA GeForce RTX 2080 Ti	fp64	lattency is 48.175293
+NVIDIA GeForce RTX 3090	fp32	lattency is 4.039551
+NVIDIA GeForce RTX 3090	fp64	lattency is 49.015625
