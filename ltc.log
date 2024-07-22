@@ -8,3 +8,5 @@ GeForce GTX 980 Ti	fp32	lattency is 9.104980
 GeForce GTX 980 Ti	fp64	lattency is 48.186523
 GeForce GTX 1080 Ti	fp32	lattency is 6.718750
 GeForce GTX 1080 Ti	fp64	lattency is 48.062500
+NVIDIA GeForce RTX 2080 Ti	fp32	lattency is 4.226562
+NVIDIA GeForce RTX 2080 Ti	fp64	lattency is 48.175293
