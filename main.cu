@@ -52,7 +52,12 @@ void test() {
     // cudaMemcpy
     cudaMemcpy(time_stamp_cpu, time_stamp,  time_stamp_size , cudaMemcpyDeviceToHost);
     std::string str=sizeof(REAL)==sizeof(double)?"fp64":"fp32";
-    printf("%s, lattency is %f\n",str.c_str(), (time_stamp_cpu[1]-time_stamp_cpu[0])/1024.0/2);
+    cudaDeviceProp deviceProp;
+    cudaGetDeviceProperties(&deviceProp, 0);
+
+    // printf("\nDevice %d: \"%s\"\n", dev, deviceProp.name);
+
+    printf("%s\t%s\tlattency is %f\n", deviceProp.name,str.c_str(), (time_stamp_cpu[1]-time_stamp_cpu[0])/1024.0/2);
     // Print the time stamps
   
     cudaFree(out);

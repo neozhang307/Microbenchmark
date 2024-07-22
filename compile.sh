@@ -1,1 +1,1 @@
-nvcc main.cu -o ltc.log
+nvcc main.cu -o ltc
