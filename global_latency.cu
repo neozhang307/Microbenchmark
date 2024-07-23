@@ -146,7 +146,7 @@ void parametric_measure_global(int N, int iterations, int stride) {
 		{
 			fprintf(stderr,"%d ", h_timeinfo[i+256*g]);
 		}
-		fprintf(stderr,"'\n");
+		fprintf(stderr,"\n");
 	}
 	printf("Average latency: %f ns\t Average latency %f cycle \n", elapsetime, elapsecycle/256.0);
 	/* free memory on GPU */
