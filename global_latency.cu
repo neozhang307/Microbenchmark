@@ -2,8 +2,8 @@
 # include <stdint.h>
 
 # include "cuda_runtime.h"
-#include <cooperative_groups.h>
-namespace cg = cooperative_groups;
+// #include <cooperative_groups.h>
+// namespace cg = cooperative_groups;
 //compile nvcc *.cu -o test
 
 __global__ void global_latency (unsigned int * my_array, int array_length, int iterations,  unsigned int * duration, unsigned int *index);
@@ -58,7 +58,16 @@ void parametric_measure_global(int N, int iterations, int stride) {
 	h_a = (unsigned int *)malloc(sizeof(unsigned int) * (N+2));
 	unsigned int * d_a;
 	/* allocate arrays on GPU */
-	cudaMalloc ((void **) &d_a, sizeof(unsigned int) * (N+2));
+	cudaError_t cudaMallocStatus = cudaMalloc ((void **) &d_a, sizeof(unsigned int) * (N+2));
+	if (cudaMallocStatus != cudaSuccess) {
+		printf("cudaMalloc failed: %s\n", cudaGetErrorString(cudaMallocStatus));
+		exit(1);
+	}
+	cudaError_t cudaMemsetError = cudaGetLastError();
+	if (cudaMemsetError != cudaSuccess) {
+		printf("cudaMemset failed: %s\n", cudaGetErrorString(cudaMemsetError));
+		exit(1);
+	}
 
    	/* initialize array elements on CPU with pointers into d_a. */
 	
@@ -67,7 +76,11 @@ void parametric_measure_global(int N, int iterations, int stride) {
 		h_a[i] = (i+stride)%N;	
 	}
 
-	h_a[N] = 0;
+	cudaError_t cudaMemcpyStatus = cudaMemcpy(d_a, h_a, sizeof(unsigned int) * N, cudaMemcpyHostToDevice);
+	if (cudaMemcpyStatus != cudaSuccess) {
+		printf("cudaMemcpy failed: %s\n", cudaGetErrorString(cudaMemcpyStatus));
+		exit(1);
+	}
 	h_a[N+1] = 0;
 	/* copy array elements from CPU to GPU */
     
@@ -99,7 +112,8 @@ void parametric_measure_global(int N, int iterations, int stride) {
 
 	for(int i=0; i<10; i++)
 	{
-		cudaLaunchCooperativeKernel((void*)global_latency,Dg, Db,KernelArgs,0,0);
+		// cudaLaunchCooperativeKernel((void*)global_latency,Dg, Db,KernelArgs,0,0);
+		global_latency<<<Dg,Db>>>(d_a,N,iterations,duration,d_index);
 	}
 
 	cudaEventRecord(stop[0]);
@@ -107,6 +121,9 @@ void parametric_measure_global(int N, int iterations, int stride) {
 
 	float milliseconds[0];
 	cudaEventElapsedTime(&milliseconds[0], start[0], stop[0]);
+	
+
+	
 
 	// printf("Kernel execution time: %f ms\n", milliseconds[0]);
 
@@ -117,7 +134,8 @@ void parametric_measure_global(int N, int iterations, int stride) {
 	iterations=20;
 	for(int i=0; i<10; i++)
 	{
-		cudaLaunchCooperativeKernel((void*)global_latency,Dg, Db,KernelArgs,0,0);
+		// cudaLaunchCooperativeKernel((void*)global_latency,Dg, Db,KernelArgs,0,0);
+		global_latency<<<Dg,Db>>>(d_a,N,iterations,duration,d_index);
 	}
 
 	cudaEventRecord(stop[1]);
@@ -148,6 +166,11 @@ void parametric_measure_global(int N, int iterations, int stride) {
 		}
 		fprintf(stderr,"\n");
 	}
+	cudaMemsetError = cudaGetLastError();
+	if (cudaMemsetError != cudaSuccess) {
+		printf("cudaMemset failed: %s\n", cudaGetErrorString(cudaMemsetError));
+		exit(1);
+	}
 	printf("Average latency: %f ns\t Average latency %f cycle \n", elapsetime, elapsecycle/256.0);
 	/* free memory on GPU */
 	cudaFree(d_a);
@@ -161,7 +184,7 @@ void parametric_measure_global(int N, int iterations, int stride) {
 	free(h_timeinfo);
 	
 	cudaDeviceReset();	
-
+	
 }
 
 
@@ -181,7 +204,7 @@ __global__ void global_latency (unsigned int * my_array, int array_length, int i
 		s_tvalue[k] = 0;
 	}
 
-	cg::grid_group gg = cg::this_grid();
+	// cg::grid_group gg = cg::this_grid();
 	
 	// if(blockDim.x==0)
 	// {
