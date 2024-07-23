@@ -1,0 +1,10 @@
+NVIDIA A100-PCIE-40GB	1.000000 GB array, 	Stride = 256 element, 1024 bytes	Average latency: 472.164983 ns	 Average latency 462.117188 cycle 
+NVIDIA A100-PCIE-40GB	1.000000 GB array, 	Stride = 256 element, 1024 bytes	Average latency: 538.537577 ns	 Average latency 467.843750 cycle 
+NVIDIA A100-PCIE-40GB	1.000000 GB array, 	Stride = 256 element, 1024 bytes	Average latency: 534.382453 ns	 Average latency 467.914062 cycle 
+NVIDIA A100-PCIE-40GB	1.000000 GB array, 	Stride = 256 element, 1024 bytes	Average latency: 535.436198 ns	 Average latency 467.171875 cycle 
+NVIDIA A100-PCIE-40GB	1.000000 GB array, 	Stride = 256 element, 1024 bytes	Average latency: 525.516346 ns	 Average latency 467.890625 cycle 
+NVIDIA A100-PCIE-40GB	1.000000 GB array, 	Stride = 256 element, 1024 bytes	Average latency: 531.338677 ns	 Average latency 467.867188 cycle 
+NVIDIA A100-PCIE-40GB	1.000000 GB array, 	Stride = 256 element, 1024 bytes	Average latency: 525.047388 ns	 Average latency 467.261719 cycle 
+NVIDIA A100-PCIE-40GB	1.000000 GB array, 	Stride = 256 element, 1024 bytes	Average latency: 533.667430 ns	 Average latency 467.812500 cycle 
+NVIDIA A100-PCIE-40GB	1.000000 GB array, 	Stride = 256 element, 1024 bytes	Average latency: 537.162554 ns	 Average latency 467.949219 cycle 
+NVIDIA A100-PCIE-40GB	1.000000 GB array, 	Stride = 256 element, 1024 bytes	Average latency: 532.445023 ns	 Average latency 467.074219 cycle 
